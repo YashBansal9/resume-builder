@@ -20,10 +20,18 @@ type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 export default function ToolBar({ editor }: Props) {
 
   const [showAiPanel, setShowAiPanel] = useState(false);
+<<<<<<< HEAD
+=======
+  const [downloading, setdownloading] = useState(false);
+>>>>>>> upstream/main
 
   const downloadPDF = useCallback(async () => {
     if (!editor) return;
     try {
+<<<<<<< HEAD
+=======
+      setdownloading(true);
+>>>>>>> upstream/main
       const content = editor.getHTML();
       const res = await api.post("/pdf/download", { content }, { responseType: "blob" });
 
@@ -36,8 +44,15 @@ export default function ToolBar({ editor }: Props) {
       link.remove();
       window.URL.revokeObjectURL(url);
       console.log("successfully downloaded pdf");
+<<<<<<< HEAD
     } catch (err) {
       console.error("Error downloading pdf:", err);
+=======
+      setdownloading(false);
+    } catch (err) {
+      console.error("Error downloading pdf:", err);
+      setdownloading(false);
+>>>>>>> upstream/main
     }
   }, [editor]);
 
@@ -111,7 +126,11 @@ export default function ToolBar({ editor }: Props) {
         </div>
 
         <div className={styles.ToolBarRightBtns}>
+<<<<<<< HEAD
           <button onClick={downloadPDF}><BiDownload size={28}/></button>
+=======
+          <button onClick={downloadPDF} disabled={downloading}>{ downloading ? "downloading.." : <BiDownload size={28}/>}</button>
+>>>>>>> upstream/main
         </div>
 
       </div>
@@ -120,8 +139,12 @@ export default function ToolBar({ editor }: Props) {
       {editor && (
       <BubbleMenu 
       editor={editor}
+<<<<<<< HEAD
       shouldShow={({editor} : Props) => editor.isActive('link')}
       tippyOptions={{ duration: 100 }}
+=======
+      shouldShow={({editor}) => editor.isActive('link')}
+>>>>>>> upstream/main
       >
         <div className={styles.ToolBarBubbleMenu}>
           <button onMouseDown={(e) => {
@@ -134,8 +157,13 @@ export default function ToolBar({ editor }: Props) {
           <button onMouseDown={(e) => {
             e.preventDefault();
             e.stopPropagation();
+<<<<<<< HEAD
             editor.chain().focus().extendMarkRange("link").unsetLink().run()>
             editor.commands.foucs();
+=======
+            editor.chain().focus().extendMarkRange("link").unsetLink().run()
+            editor.commands.focus();
+>>>>>>> upstream/main
           }}>
             delete
           </button>

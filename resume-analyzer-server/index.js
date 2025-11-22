@@ -6,7 +6,11 @@ const app = express();
 app.use(express.json());
 
 const corsOptions = {
+<<<<<<< HEAD
   origin: "http://localhost:5173",
+=======
+  origin: ["http://localhost:5173", "https://resume-frontend-fl09.onrender.com"],
+>>>>>>> upstream/main
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
 };
@@ -19,6 +23,13 @@ app.get('/test', (req, res) => {
   res.json({ message: "hello world" });
 });
 
+<<<<<<< HEAD
 app.listen(3000, () => {
   console.log("server running on localhost:3000");
+=======
+const port = process.env.PORT || 3000;
+
+app.listen(port, "0.0.0.0", () => {
+  console.log("server running on Port", port);
+>>>>>>> upstream/main
 });

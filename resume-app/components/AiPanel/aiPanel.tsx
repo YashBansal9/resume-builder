@@ -123,7 +123,11 @@ export default function Aipanel({ editor }: Props) {
     setAiResponse("");
   };
 
+<<<<<<< HEAD
   const textArea = (e) => {
+=======
+  const textArea = (e : React.ChangeEvent<HTMLTextAreaElement>) : void => {
+>>>>>>> upstream/main
     setPrompt(e.target.value);
     e.target.style.height = "auto";
     e.target.style.height = `${e.target.scrollHeight}px`
@@ -131,7 +135,11 @@ export default function Aipanel({ editor }: Props) {
 
   return (
     <>
+<<<<<<< HEAD
     {showPop && <PopUp message={aiResponse} onClose={() => setShowPop(false)} />}
+=======
+    {showPop && <PopUp message={aiResponse} onClose={() => setShowPop(false)} isError={false} />}
+>>>>>>> upstream/main
 
     <div className={styles.aiPanel}>
       <textarea
